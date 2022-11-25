@@ -129,7 +129,7 @@
 
 @media screen and (max-width:395px){
     .header{
-        width: 375px;
+        width: 100%;
         margin: 0 auto;
         height: 40px;
         background: brown;
