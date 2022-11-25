@@ -6,11 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/index.js"></script>
     <script src="js/vue.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Pinyee 學習計畫表</title>
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        setInterval(function(){
+                drawChart();
+        },2000)
+        function drawChart() {
+            
+            var cpp =(+document.getElementById("cpp").innerText/50.0)*100.0;
+            var Java =(+document.getElementById("Java").innerText/715.0)*100.0;
+            var Python =(+document.getElementById("Python").innerText/131.0)*100.0;
+            var hc =(+document.getElementById("hc").innerText/148.0)*100.0;
+            var Js =(+document.getElementById("Js").innerText/140.0)*100.0;
+            var data = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['C++',     cpp],
+            ['none',     100-cpp],
+            ]);
+            var data2 = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Java',     Java],
+            ['none',     100-Java],
+            ]);
+            var data3 = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Python',     Python],
+            ['none',     100-Python],
+            ]);
+            var data4 = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['html/css',     hc],
+            ['none',     100-hc],
+            ]);
+            var data5 = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['JavaScript',     Js],
+            ['none',     100-Js],
+            ]);
+
+            var options = {
+            pieHole: 0.48,
+            chartArea:{left:'10%',top:'10%',width:'80%',height:'80%'},
+            pieSliceTextStyle: {
+                color: 'none',
+            },
+            colors:['#CE0000','#F0F0F0'],
+            legend: 'none'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single1'));
+            var chart2 = new google.visualization.PieChart(document.getElementById('donut_single2'));
+            var chart3 = new google.visualization.PieChart(document.getElementById('donut_single3'));
+            var chart4 = new google.visualization.PieChart(document.getElementById('donut_single4'));
+            var chart5 = new google.visualization.PieChart(document.getElementById('donut_single5'));
+            chart.draw(data, options);
+            chart2.draw(data2, options);
+            chart3.draw(data3, options);
+            chart4.draw(data4, options);
+            chart5.draw(data5, options);
+        }
+    </script>
 </head>
 <body>
+    <div id="form">
+    <div class="hide-c">
+        <span id="cpp">{{cpp}}</span>
+        <span id="Java">{{Java}}</span>
+        <span id="Python">{{Python}}</span>
+        <span id="hc">{{hc}}</span>
+        <span id="Js">{{Js}}</span>
+    </div>
     <div class="header">
         <div class="header-box">
             <ul>
@@ -20,5 +90,66 @@
             </ul>
         </div>
     </div>
+    <div class="banner">
+        <img src="images/banner.png" alt="">
+    </div>
+    <div class="title">
+        <h1>學習記錄表</h1>
+    </div>
+    <div class="form">
+            <label for="subject">科目：</label>
+            <select name="" id="subject" v-model="sub"> 
+                <option value="">請選擇科目</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="html/css">html/css</option>
+                <option value="JavaScript">JavaScript</option>
+            </select>
+        
+            <label for="section">章節：</label>
+            <input type="text" placeholder="格式：01~XX" v-model="sec">
+            <button @click="insertData">資料送出</button>
+    </div>
+    <div class="table">
+        <table id="find" class="find">
+            <tr class="t-h">
+                <td>序號</td>
+                <td>科目</td>
+                <td>章節</td>
+                <td>日期</td>
+            </tr>
+            <tr v-for="items in obj">
+                <td>{{items.index}}</td>
+                <td>{{items.subject}}</td>
+                <td>{{items.section}}</td>
+                <td>{{items.date}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="chart-all">
+        <div class="chart">
+            <div class="d1" id="donut_single1"></div>
+            <h2>C++</h2>
+        </div>
+        <div class="chart">
+            <div class="d1" id="donut_single2"></div>
+            <h2>Java</h2>
+        </div>
+        <div class="chart">
+            <div class="d1" id="donut_single3"></div>
+            <h2>Python</h2>
+        </div>
+        <div class="chart">
+            <div class="d1" id="donut_single4"></div>
+            <h2>html/css</h2>
+        </div>
+        <div class="chart">
+            <div class="d1" id="donut_single5"></div>
+            <h2>JavaScript</h2>
+        </div>
+    </div>
+</div>
+        
 </body>
 </html>

@@ -1,9 +1,12 @@
+.hide-c{
+    display: none;
+}
 .header{
     width: 100%;
     margin: 0 auto;
     height: 60px;
     background: brown;
-    position: relative;
+    position: fixed;
 }
 .header-box{
     position: absolute;
@@ -34,13 +37,213 @@
     cursor: pointer;  
     display: block;
 }
+.banner{
+    width: 100%;
+    margin: 0 auto;
+}
+.banner>img{
+    margin-top: 50px;
+    width: 100%;
+}
+.title{
+    width: 100%;
+    margin: 0 1px;
+}
+.title>h1{
+    text-align: center;
+    font-size: 32px;
+    line-height: 2;
+}
+.form{
+    margin-top: 10px;
+    width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.form select,input{
+    width:200px;
+    height: 24px;
+}
+.form button{
+    width: 100px;
+    margin-left: 20px;
+    height: 24px;
+    background-color: transparent;
+    border:1px solid black;
+    border-radius: 5px;
+    color: black;
+}
+.form button:hover{
+    color: white;
+    background: brown;
+    border: 1px solid brown;
+    cursor: pointer;
+}
+.table{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 250px;
+    overflow-y: scroll;
+    border-bottom: 1px solid brown;
+    padding-bottom: 10px;
+}
+.table td{
+    padding: 5px;
+    width: 225px;
+    text-align: center;
+}
+.t-h{
+    background: brown;
+    color:white;
+}
+
+.chart-all{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+}
+.chart{
+    width: 20%;
+    height: 100%;
+}
+.chart>h2{
+    text-align: center;
+    line-height: 24px;
+    font-size: 24px;
+}
 
 
 
 
+@media screen and (max-width:395px){
+    .header{
+        width: 375px;
+        margin: 0 auto;
+        height: 40px;
+        background: brown;
+        position: relative;
+    }
+    .header-box{
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+    .header-box>ul{
+        display: flex;
+        line-height: 38px;
+    }
+    .header li{
+        width: 80px;
+        font-size: 12px;
+        text-align: center;
+        border-top: 1px solid brown;
+        border-bottom: 1px solid brown;
+        border-right: 1px solid white;
+        border-left: 1px solid white;
+        
+    }
+    .header li>a{
+        color: white;
+        text-decoration: none;
+        display: block;
+    }
+    .header li>a:hover{
+        color: brown;
+        background: white;
+        cursor: pointer;  
+        display: block;
+    }
 
+    .banner{
+        width: 375px;
+        margin: 0 auto;
+    }
+    .banner>img{
+        width: 100%;
+    }
 
+    .title{
+        width: 375px;
+        margin: 0 1px;
+    }
+    .title>h1{
+        text-align: center;
+        font-size: 20px;
+        line-height: 1.75;
+    }
 
-@media screen and (max-width:441px){
+    .form{
+        margin-top: 14px;
+        width: 375px;
+        margin: 0 auto;
+        font-size: 14px;
+        padding-left: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .form select,input{
+        width:80%;
+        height: 24px;
+        margin-bottom: 10px;
+    }
+    .form label{
+        line-height:24px;
+    }
+    .form button{
+        width: 92%;
+        height: 24px;
+        margin-left: 0;
+        background-color: transparent;
+        border:1px solid black;
+        border-radius: 5px;
+        color: black;
+    }
+    .form button:hover{
+        color: white;
+        background: brown;
+        border: 1px solid brown;
+        cursor: pointer;
+    }
+    .table{
+        width: 375px;
+        height: 150px;
+        overflow-y: scroll;
+        margin: 0 auto;
+        margin-top: 20px;
+        border-bottom: 1px solid brown;
+        padding-bottom: 10px;
+    }
+    .table td{
+        padding: 5px;
+        font-size: 14px;
+        width: 175px;
+        text-align: center;
+    }
+    .t-h{
+        background: brown;
+        color:white;
+    }
 
+    .chart-all{
+        width: 375px;
+        margin: 0 auto;
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .chart{
+        width: 100%;
+        height: 250px;
+
+    }
+    .chart>h2{
+        text-align: center;
+        line-height: 24px;
+        font-size: 24px;
+    }
 }
