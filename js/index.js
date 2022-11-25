@@ -42,11 +42,22 @@ window.onload=function(){
                     alert("不可輸入超過該章節最大範圍之數值");
                 }
                 else{
+                    console.log("順利輸出");
                     this.obj.push(obs);
                     this.submit(obs);
-                    if(+obs.section.split("~")[1]>st[obs.subject][0]){
+                    
+                    if(+obs.section.split("~")[1]>st[obs.subject][0] || st[obs.subject][0]==undefined){
                         console.log("重繪")
-                        this[obs.subject]=+obs.section.split("~")[1];
+                        if(obs.subject=="JavaScript"){
+                            this["Js"]=+obs.section.split("~")[1];
+                        }
+                        else if(obs.subject=="html/css"){
+                            this["hc"]=+obs.section.split("~")[1];
+                        }
+                        else{
+                            this[obs.subject]=+obs.section.split("~")[1];
+                            console.log(this[obs.subject]);
+                        }
                     }
                 }
 
