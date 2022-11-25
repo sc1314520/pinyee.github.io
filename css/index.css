@@ -1,0 +1,46 @@
+.header{
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    background: brown;
+    position: relative;
+}
+.header-box{
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+.header-box>ul{
+    display: flex;
+    line-height: 58px;
+}
+.header li{
+    width: 150px;
+    text-align: center;
+    border-top: 1px solid brown;
+    border-bottom: 1px solid brown;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    
+}
+.header li>a{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+.header li>a:hover{
+    color: brown;
+    background: white;
+    cursor: pointer;  
+    display: block;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:441px){
+
+}
