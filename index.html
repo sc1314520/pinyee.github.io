@@ -112,12 +112,15 @@
             <button @click="insertData">資料送出</button>
     </div>
     <div class="table">
-        <table id="find" class="find">
+        <table class="tt">
             <tr class="t-h">
                 <td>科目</td>
                 <td>章節</td>
                 <td>日期</td>
             </tr>
+        </table>
+        <table id="find" class="find">
+            
             <tr v-for="items in obj">
                 <td>{{items.subject}}</td>
                 <td>{{items.section}}</td>

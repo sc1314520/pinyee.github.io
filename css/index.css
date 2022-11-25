@@ -94,9 +94,18 @@
     width: 300px;
     text-align: center;
 }
+.tt{
+    margin-bottom: 28px;
+}
 .t-h{
     background: brown;
     color:white;
+    position: absolute;
+}
+.t-h td{
+    padding: 5px;
+    width: 300px;
+    text-align: center;
 }
 
 .chart-all{
@@ -227,6 +236,9 @@
     .t-h{
         background: brown;
         color:white;
+    }
+    .tt{
+        margin-bottom: 26px;
     }
 
     .chart-all{
