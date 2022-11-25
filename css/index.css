@@ -2,6 +2,7 @@
     display: none;
 }
 .header{
+    z-index: 1001;
     width: 100%;
     margin: 0 auto;
     height: 60px;
@@ -129,6 +130,7 @@
 
 @media screen and (max-width:395px){
     .header{
+        z-index: 1001;
         width: 100%;
         margin: 0 auto;
         height: 40px;
