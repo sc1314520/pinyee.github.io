@@ -1,5 +1,4 @@
 window.onload=function(){
-    let i=0;
     new Vue({
         el:"#form",
         data:{
@@ -14,15 +13,13 @@ window.onload=function(){
             Js:'',
 
             // fetch
-            apiUrl:'https://script.google.com/macros/s/AKfycbxm3-Fv1H3nALJWp98WCtwavL4hnbCch_Jcs_smDCQRsaqYnTi5v2aB6O_AEsJ-GPo/exec',
+            apiUrl:'https://script.google.com/macros/s/AKfycbzIyTJd00nmGvSL-p9MqnzuOaGukjxzDuIfCib4EXkLBixow7RJ_Ia3iizqnctNkBc/exec',
             sending: false,
         },
         methods:{
             insertData(){
                 var time = new Date().getFullYear()+"/"+new Date().getMonth()+"/"+new Date().getDate();
-                i++;
                 var obs ={
-                    index:i,
                     subject:this.sub,
                     section:this.sec,
                     date:time
@@ -57,7 +54,6 @@ window.onload=function(){
 
                 // 資料創建
                 let formdata = new FormData();
-                formdata.append('index', obs.index);
                 formdata.append('subject', obs.subject);
                 formdata.append('section', obs.section);
                 formdata.append('date', obs.date);
@@ -67,7 +63,7 @@ window.onload=function(){
                 body: formdata,
                 redirect: 'follow'
                 };
-                fetch(this.apiUri, config)
+                fetch(this.apiUrl, config)
                 .then(response => response.text())
                 .then(result => {
                     if(result === 'success') {
