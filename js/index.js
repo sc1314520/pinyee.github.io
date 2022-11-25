@@ -1,5 +1,5 @@
 window.onload=function(){
-    new Vue({
+    const vm =new Vue({
         el:"#form",
         data:{
             obj:[],
@@ -11,9 +11,17 @@ window.onload=function(){
             Python:'',
             hc:'',
             Js:'',
+            st:{},
+            range:{
+                "C++":50,
+                "Java":715,
+                "Python":131,
+                "html/css":148,
+                "JavaScript":140
+            },
 
             // fetch
-            apiUrl:'https://script.google.com/macros/s/AKfycbzIyTJd00nmGvSL-p9MqnzuOaGukjxzDuIfCib4EXkLBixow7RJ_Ia3iizqnctNkBc/exec',
+            apiUrl:'https://script.google.com/macros/s/AKfycbz4yvGM-Tp46RKRHR7sSBBTXp0-RmEIe04WCjhjUVUelFLyZpr8PqO-LWowYjvQP8g/exec',
             sending: false,
         },
         methods:{
@@ -24,29 +32,26 @@ window.onload=function(){
                     section:this.sec,
                     date:time
                 }
-                this.obj.push(obs);
-                if(this.sub=="C++"){
-                    var end = this.sec.split("~")[1];
-                    this.cpp=end;
-                   
+                if(this.sub==""){
+                    alert("請選擇科目");
                 }
-                else if(this.sub=="Java"){
-                    var end = this.sec.split("~")[1];
-                    this.Java=end;
+                else if (this.sec.indexOf("~")==-1) {
+                    alert("章節格式錯誤")
                 }
-                else if(this.sub=="Python"){
-                    var end = this.sec.split("~")[1];
-                    this.Python=end;
+                else if(this.sec.split("~")[1]>this.range[this.sub]){
+                    alert("不可輸入超過該章節最大範圍之數值");
                 }
-                else if(this.sub=="html/css"){
-                    var end = this.sec.split("~")[1];
-                    this.hc=end;
+                else{
+                    this.obj.push(obs);
+                    this.submit(obs);
+                    if(+obs.section.split("~")[1]>st[obs.subject][0]){
+                        console.log("重繪")
+                        this[obs.subject]=+obs.section.split("~")[1];
+                    }
                 }
-                else if(this.sub=="JavaScript"){
-                    var end = this.sec.split("~")[1];
-                    this.Js=end;
-                }
-                this.submit(obs);
+
+                
+                
             },
             submit(obs){
                 this.sending = true;
@@ -58,7 +63,7 @@ window.onload=function(){
                 formdata.append('section', obs.section);
                 formdata.append('date', obs.date);
 
-                const config = {
+                var config = {
                 method: 'POST',
                 body: formdata,
                 redirect: 'follow'
@@ -72,10 +77,56 @@ window.onload=function(){
                     console.log(result);
                 })
                 .catch(error => console.log('error', error));
+            },
+            getData(){
+                var obj;
+                console.log("get");
+                var config = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+                fetch(this.apiUrl, config)
+                .then(response => response.text())
+                .then(result => {
+                  st={
+                    "C++":[],
+                    "Java":[],
+                    "Python":[],
+                    "html/css":[],
+                    "JavaScript":[]
+                  }
+                  var data = JSON.parse(result);
+                  for(ob in data){
+                    var old =new Date(data[ob].date.split("T")[0].split("-")[0],data[ob].date.split("T")[0].split("-")[1],data[ob].date.split("T")[0].split("-")[2]).getTime();
+                    var nw = new Date(old+86400000);
+
+                    console.log(nw)
+                    var k ={
+                        subject:data[ob].subject,
+                        section:data[ob].section,
+                        date:nw.getFullYear()+"/"+nw.getMonth()+"/"+nw.getDate()
+                    }
+                    this.obj.push(k);
+                    st[data[ob].subject].push(+data[ob].section.split("~")[1]);
+                    console.log(st);
+                  }
+                  for(arr in st){
+                    st[arr].sort().reverse();
+                  }
+                  this.cpp=st["C++"][0]
+                  this.Java=st["Java"][0]
+                  this.Python=st["Python"][0]
+                  this.hc=st["html/css"][0]
+                  this.Js=st["JavaScript"][0]
+                })
+                .catch(error => console.log('error', error));
+                
             }
             
         }
+        
     })
+    vm.getData();
 }
 
 
