@@ -10,8 +10,8 @@ function doPost(e) {
 }
 function doGet(){
   var ss =SpreadsheetApp.getActive();
-  var sheet = ss.getSheets()[1]; // 要第幾個sheet？ 0 就是第一個
-  var data = sheet.getDataRange().getValues(); // 取得的資料
+  var sheet = ss.getSheets()[1]; 
+  var data = sheet.getDataRange().getValues();
   console.log(data);
   var dataExport = {};
   for(var i = 1; i < data.length; i++) {
