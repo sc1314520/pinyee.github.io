@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+    <link rel="manifest" href="ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/prize.css">
+    <script src="js/vue.js"></script>
+    <script src="js/prize.js"></script>
+    <title>Pinyee 學習計畫表</title>
+</head>
+<body>
+    <div id="form2" class="form2">
+    <div class="header">
+        <div class="header-box">
+            <ul>
+                <li><a href="index.html">主控表</a></li>
+                <li><a href="prize.html">特殊挑戰</a></li>
+                <li><a href="">兌換獎勵</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="images/banner2.png" alt="">
+    </div>
+    <div class="title">
+        <h1>特殊挑戰列表<span class="point">點數：{{point}}</span></h1>
+    </div>
+    <div class="table">
+        <table class="tt">
+            <tr class="t-h">
+                <td>語言</td>
+                <td>題目</td>
+                <td>狀態</td>
+                <td>繳交</td>
+            </tr>
+        </table>
+        <table id="find" class="find">
+            <tr v-for="items in obj">
+                <td>{{items.lang}}</td>
+                <td>{{items.pro}}</td>
+                <td>{{items.state}}</td>
+                <td>
+                    <button @click="go(items)" class='sub' v-if="items.state=='未提交'">提交</button>
+                    <button class='sub' v-else>已提交</button>
+                </td>
+            </tr>
+        </table>
+        <div v-if="show" class="sub-c">
+            <h1>題目：{{subtitle}}</h1>
+            <input type="text" name="" id="" placeholder="請貼上代碼連結" v-model="link">
+            <button @click="submit()" class="sub2">確認送出</button>
+            <button @click="close()" class="sub2">取消提交</button>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
