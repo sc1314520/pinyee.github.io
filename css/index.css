@@ -236,6 +236,8 @@
         text-align: center;
     }
     .t-h{
+        width: 375px;
+        margin: 0 auto;
         background: brown;
         color:white;
     }
