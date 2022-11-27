@@ -65,11 +65,14 @@
     padding-left: 10px;
 }
 @media screen and (max-width:395px){
+    .table{
+        height:300px;
+    }
     .table td{
         width: 93.75px;
     }
     .sub-c{
-        bottom: 10px;
+        bottom: 80px;
         height: 130px;
         width: 50%;
         left: 25%;

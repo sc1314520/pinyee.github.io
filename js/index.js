@@ -12,6 +12,7 @@ window.onload=function(){
             hc:'',
             Js:'',
             st:{},
+            ver:false,
             range:{
                 "C++":50,
                 "Java":715,
@@ -134,11 +135,22 @@ window.onload=function(){
                 })
                 .catch(error => console.log('error', error));
                 
+            },
+            pinyee(){
+                var verify = prompt("請輸入驗證代碼：")
+                if(verify=="pinyee"){
+                    this.ver =true;
+                }
+                else{
+                    this.ver=false;
+                    alert("驗證失敗");
+                } 
             }
             
         }
         
     })
+    vm.pinyee();
     vm.getData();
 }
 
