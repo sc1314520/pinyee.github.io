@@ -17,8 +17,9 @@ window.onload=function(){
                 this.show=true;
             },
             submit(obs){
-                if(confirm("確認送出？")){
+                if(confirm("確認送出？") && this.point>=obs.cost){
                     obs.state="申請中"
+                    this.point = this.point - obs.cost;
                     this.sending = true;
                     console.log("send");
     
@@ -40,6 +41,9 @@ window.onload=function(){
                         console.log(result);
                     })
                     .catch(error => console.log('error', error));
+                }
+                else{
+                    alert("申請終止或點數不足")
                 }
                 
             },
