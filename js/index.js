@@ -42,6 +42,15 @@ window.onload=function(){
                 else if(this.sec.split("~")[1]>this.range[this.sub]){
                     alert("不可輸入超過該章節最大範圍之數值");
                 }
+                else if(+this.sec.split("~")[1]%5!=0 && this.range[this.sub]-(+this.sec.split("~")[1])>=5){
+                    alert("請以五章節紀錄一次")
+                }
+                else if((+this.sec.split("~")[1]+1)-(+this.sec.split("~")[0])>5){
+                    alert("請以五章節紀錄一次")
+                }
+                else if((+this.sec.split("~")[1]+1)-(+this.sec.split("~")[0])<=0){
+                    alert("請以 小～大 的格式進行輸入");
+                }
                 else{
                     if(confirm("您的資料為： 科目："+this.sub+"、 章節："+this.sec)){
                         console.log("順利輸出");
