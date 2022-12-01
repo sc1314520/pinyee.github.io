@@ -11,7 +11,7 @@ window.onload=function(){
             ver:false,
             //
             sending:false, 
-            apiUrl:'https://script.google.com/macros/s/AKfycbw1WTf3nID5xaUBb7KiKuNq8XZEjkHETADy_ZVKuhsbDgYBtqG5HqIykEZPBPVSm5Y/exec'
+            //apiUrl:'https://script.google.com/macros/s/AKfycbw1WTf3nID5xaUBb7KiKuNq8XZEjkHETADy_ZVKuhsbDgYBtqG5HqIykEZPBPVSm5Y/exec'
             
         },
         methods:{
@@ -60,7 +60,7 @@ window.onload=function(){
                     method: 'GET',
                     redirect: 'follow'
                 };
-                fetch(this.apiUrl, config)
+                fetch('https://script.google.com/macros/s/AKfycbw1WTf3nID5xaUBb7KiKuNq8XZEjkHETADy_ZVKuhsbDgYBtqG5HqIykEZPBPVSm5Y/exec', config)
                 .then(response => response.text())
                 .then(result => {
                   var data = JSON.parse(result);

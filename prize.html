@@ -27,6 +27,11 @@
     <script src="js/vue.js"></script>
     <script src="js/prize.js"></script>
     <title>Pinyee 學習計畫表</title>
+    <style>
+        [v-cloak]{
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <div id="form2" class="form2" v-if="ver">
@@ -54,7 +59,7 @@
                 <td>繳交</td>
             </tr>
         </table>
-        <table id="find" class="find">
+        <table v-cloak id="find" class="find">
             <tr v-for="items in obj">
                 <td>{{items.lang}}</td>
                 <td>{{items.pro}}</td>
@@ -65,7 +70,7 @@
                 </td>
             </tr>
         </table>
-        <div v-if="show" class="sub-c">
+        <div v-cloak v-if="show" class="sub-c">
             <h1>題目：{{subtitle}}</h1>
             <input type="text" name="" id="" placeholder="請貼上代碼連結" v-model="link">
             <button @click="submit()" class="sub2">確認送出</button>

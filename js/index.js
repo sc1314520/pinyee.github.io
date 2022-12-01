@@ -22,7 +22,7 @@ window.onload=function(){
             },
 
             // fetch
-            apiUrl:'https://script.google.com/macros/s/AKfycbz4yvGM-Tp46RKRHR7sSBBTXp0-RmEIe04WCjhjUVUelFLyZpr8PqO-LWowYjvQP8g/exec',
+            //apiUrl:'https://script.google.com/macros/s/AKfycbz4yvGM-Tp46RKRHR7sSBBTXp0-RmEIe04WCjhjUVUelFLyZpr8PqO-LWowYjvQP8g/exec',
             sending: false,
         },
         methods:{
@@ -91,7 +91,7 @@ window.onload=function(){
                 body: formdata,
                 redirect: 'follow'
                 };
-                fetch(this.apiUrl, config)
+                fetch("https://script.google.com/macros/s/AKfycbz4yvGM-Tp46RKRHR7sSBBTXp0-RmEIe04WCjhjUVUelFLyZpr8PqO-LWowYjvQP8g/exec", config)
                 .then(response => response.text())
                 .then(result => {
                     if(result === 'success') {
@@ -108,7 +108,7 @@ window.onload=function(){
                     method: 'GET',
                     redirect: 'follow'
                 };
-                fetch(this.apiUrl, config)
+                fetch("https://script.google.com/macros/s/AKfycbz4yvGM-Tp46RKRHR7sSBBTXp0-RmEIe04WCjhjUVUelFLyZpr8PqO-LWowYjvQP8g/exec", config)
                 .then(response => response.text())
                 .then(result => {
                   st={

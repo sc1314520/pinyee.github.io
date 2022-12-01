@@ -27,6 +27,11 @@
     <script src="js/index.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Pinyee 學習計畫表</title>
+    <style>
+        [v-cloak]{
+            display: none !important;
+        }
+    </style>
     <script>
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -136,7 +141,7 @@
                 <td>日期</td>
             </tr>
         </table>
-        <table id="find" class="find">
+        <table v-cloak id="find" class="find">
             
             <tr v-for="items in obj">
                 <td>{{items.subject}}</td>
